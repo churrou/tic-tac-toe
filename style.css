@@ -5,4 +5,30 @@
 
 html, body {
   height: 100%;
+  font-family: 'Tilt Neon', sans-serif;
+  text-align: center;
+}
+/*My CSS*/
+.gameBoard{
+    border: 2px solid red;
+    border-radius: 1rem;
+    padding: .25rem;
+    max-width: 50%;
+    min-width: 30%;
+    overflow: hidden;
+    display: grid;
+    gap: .25rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: auto;
+}
+.gamePiece{
+    font-size: 48px;
+    font-weight: 800;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .75rem;
+    background-color: red;
+    color: white;
 }
