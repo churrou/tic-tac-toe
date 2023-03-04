@@ -1,9 +1,18 @@
-const gameBoard = [
-    '1', '2', '3', 
-    '4', '5', '6', 
-    '7', '8', '9'
-]
+const Gameboard = ()=> {
+    const gameboard = [
+        '1', '2', '3', 
+        '4', '5', '6', 
+        '7', '8', '9'
+    ]
+}
 
+const Players = () =>{
+    return;
+}
+
+const Game = () => {
+    
+}
 const player1 = 'O'
 const player2 = 'X'
 let turn = 1
