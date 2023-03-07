@@ -9,12 +9,17 @@ html, body {
   text-align: center;
 }
 /*My CSS*/
+.controls{
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 1rem;
+  display: inline-block;
+  padding: 1rem;
+}
 .gameBoard{
-    border: 2px solid red;
+    border: 4px solid rgb(0, 0, 0);
     border-radius: 1rem;
     padding: .25rem;
-    max-width: 50%;
-    min-width: 30%;
+    width: clamp(240px, 50%, 540px);
     overflow: hidden;
     display: grid;
     gap: .25rem;
@@ -28,7 +33,21 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px solid rgb(52, 52, 52);
     border-radius: .75rem;
-    background-color: red;
     color: white;
+    background-color: rgb(203, 203, 203);
+}
+
+.activeGamePiece{
+  font-size: 48px;
+  font-weight: 800;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(110, 110, 110);
+  border-radius: .75rem;
+  color: white;
+  background-color: rgb(216, 216, 216);
 }

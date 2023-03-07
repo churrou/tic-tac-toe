@@ -1,47 +1,108 @@
-const Gameboard = ()=> {
-    const gameboard = [
-        '1', '2', '3', 
-        '4', '5', '6', 
-        '7', '8', '9'
-    ]
+const Player = (name, token) => {
+    return {name, token}
 }
 
-const Players = () =>{
-    return;
-}
+const Gameboard = (() => {
+    const board = document.querySelectorAll('.gamePiece')
 
-const Game = () => {
+    const resetBoard = () => {
+        board.forEach(square => square.textContent = '')
+    }
 
-}
+    board.forEach(square => square.addEventListener('click', (event) => {
+        Game.addToken(event)
+    }));
+    const getBoard = ()=> board
 
-// const player1 = 'O'
-// const player2 = 'X'
-// let turn = 1
+    return{getBoard, resetBoard}
+})();
 
-// const square1 = document.querySelector(".gameBoard")
 
-// function checkTurn(){
-//     let currentPlayer = player1;
-//     if (turn !== 1){
-//         currentPlayer = player2;
-//         turn--
-//         return currentPlayer
-//     }
-//     turn++
-//     return currentPlayer
-// }
+const Game = (() => {
+    const startBtn = document.querySelector('#start')
+    const restartBtn = document.querySelector('#restart')
+    const messageDisplay = document.querySelector('#messageDisplay')
+    let boardArray = ["","","","","","","","",""];
 
-// checkTurn
+    let players = [];
+    let currentActivePlayer;
+    let gameActive = false;
+    
+    const initPlayers = () => {
+        let player1Name = document.querySelector('#player1').value
+        let player2Name = document.querySelector('#player2').value
+        players = [Player(player1Name, "X"), Player(player2Name, "O")]
+        currentActivePlayer = players[0]
+        messageDisplay.textContent = `${currentActivePlayer.name}'s turn`
+    }
 
-// function createGrid() {
-//     for (let i = 0; i < gameBoard.length; i++){
-//         const squares = document.createElement('div')
-//         squares.addEventListener('click', ()=>{
-//             squares.textContent = checkTurn()
-//         })
-//         squares.classList.add('gamePiece')
-//         squares.textContent = gameBoard[i]
-//         square1.append(squares)
-//     }
-// }
-// createGrid();
+    const addToken = (square) => {
+        const empty = (square) => square !== ''
+        if (square.target.textContent !== '' || gameActive === false){
+            messageDisplay.textContent = 'Press "Start Game" to Play'
+            return
+        }
+        equalizeBoard(square)
+        if (checkWin(boardArray)) {
+            messageDisplay.textContent = `"${currentActivePlayer.token}" ${currentActivePlayer.name} wins!`
+        }else if (boardArray.every(empty)){
+            messageDisplay.textContent = `It's a tie!`
+            gameActive = false
+        }
+        switchActivePlayer()
+    }
+
+    const checkWin = (board) => {
+            const winConditions = [
+                [0,1,2],
+                [3,4,5],
+                [6,7,8],
+                [0,3,6],
+                [1,4,7],
+                [2,5,8],
+                [0,4,8],
+                [2,4,6],
+            ]
+            for (let i = 0; i < winConditions.length; i++){
+                let [a, b, c] = winConditions[i];
+                if (board[a] && board[a] === board[b] && board[a] === board[c]){
+                    gameActive = false;
+                    return true
+                }
+            }
+            return false
+        }
+
+    const equalizeBoard = (event) => {
+        event.target.textContent = currentActivePlayer.token
+        boardArray[event.target.dataset.index] = event.target.textContent
+    }
+
+    const resetGame = () => {
+        boardArray = ["","","","","","","","",""];
+        messageDisplay.textContent = ''
+        Gameboard.resetBoard()
+        document.querySelector('#player1').value = ''
+        document.querySelector('#player2').value = ''
+        gameActive = false
+    }
+
+    const switchActivePlayer = () => {
+        if (gameActive){
+            currentActivePlayer = currentActivePlayer === players[0] ? players[1] : players[0]
+            messageDisplay.textContent = `${currentActivePlayer.name}'s Turn`
+        }
+    }
+    
+    startBtn.addEventListener('click', ()=> {
+        if (gameActive === false){
+            initPlayers()            
+            gameActive = true
+        }
+    })
+    restartBtn.addEventListener('click', resetGame)
+
+    const getBoardArray = () => boardArray
+
+    return {addToken, getBoardArray}
+})();

@@ -6,12 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tilt+Neon">
-    <title>Document</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 <body>
     <div class="main">
-        <h1>tick-tac-toe</h1>
-        <div class="gameBoard"></div>
+        <h1>Tic-Tac-Toe</h1>
+        <div class="controls">
+            <div class="input">
+                <label for="player1">Player 1:</label>
+                <input type="text" name="player1" id="player1" placeholder="Austin">
+            </div>
+            <div class="input">
+                <label for="player2">Player 2:</label>
+                <input type="text" name="player2" id="player2" placeholder="Charles">
+            </div>
+            <button id="start">Start Game</button>
+            <button id="restart">Restart Game</button>
+        </div>
+
+        <div class="gameBoard">
+            <div class="gamePiece" data-index="0"></div>
+            <div class="gamePiece" data-index="1"></div>
+            <div class="gamePiece" data-index="2"></div>
+            <div class="gamePiece" data-index="3"></div>
+            <div class="gamePiece" data-index="4"></div>
+            <div class="gamePiece" data-index="5"></div>
+            <div class="gamePiece" data-index="6"></div>
+            <div class="gamePiece" data-index="7"></div>
+            <div class="gamePiece" data-index="8"></div>
+        </div>
+        <h2 id="messageDisplay"></h2>
     </div>
     <script src="script.js"></script>
 </body>
