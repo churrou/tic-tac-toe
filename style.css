@@ -11,7 +11,7 @@ html, body {
 }
 /*My CSS*/
 .controls{
-  border: 2px solid rgb(0, 0, 0);
+  border: 4px solid rgb(0, 0, 0);
   border-radius: .75rem;
   display: grid;
   justify-content: center;
@@ -29,6 +29,11 @@ input{
   display: grid
 }
 
+#messageDisplay{
+  margin: .5rem auto;
+  border: #000000;
+}
+
 button {
   background-color: #000000;
   color: #ffffff;
@@ -36,6 +41,12 @@ button {
   padding: 1rem;
   cursor: pointer;
   border-radius: .25rem;
+}
+
+#restart{
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid black;
 }
 
 .gameBoard{

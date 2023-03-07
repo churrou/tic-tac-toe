@@ -13,16 +13,18 @@
         <h1>Tic-Tac-Toe</h1>
         <div class="controls">
             <div class="input">
-                <label for="player1" class="placeholder">Player 1:</label>
-                <input type="text" name="player1" id="player1" placeholder="Austin">
+                <label for="player1">Player 1:</label>
+                <input type="text" name="player1" id="player1" placeholder="Your Name">
             </div>
             <div class="input">
-                <label for="player2" class="placeholder">Player 2:</label>
-                <input type="text" name="player2" id="player2" placeholder="Charles">
+                <label for="player2" >Player 2:</label>
+                <input type="text" name="player2" id="player2" placeholder="Your Friend's Name">
             </div>
             <button id="start">Start Game</button>
             <button id="restart">Clear Board</button>
         </div>
+
+        <h2 id="messageDisplay">Enter Names to Play!</h2>
 
         <div class="gameBoard">
             <div class="gamePiece" data-index="0"></div>
@@ -35,7 +37,6 @@
             <div class="gamePiece" data-index="7"></div>
             <div class="gamePiece" data-index="8"></div>
         </div>
-        <h2 id="messageDisplay"></h2>
     </div>
     <script src="script.js"></script>
 </body>

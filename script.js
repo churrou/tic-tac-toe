@@ -89,11 +89,9 @@ const Game = (() => {
     }
 
     const resetGame = () => {
-        if (gameActive){
-            Gameboard.turnBoardInactive()  
-        }
+        Gameboard.turnBoardInactive()  
         boardArray = ["","","","","","","","",""];
-        messageDisplay.textContent = ''
+        messageDisplay.textContent = 'Enter Names to Play!'
         Gameboard.resetBoard()
         gameActive = false
     }
