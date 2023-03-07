@@ -3,10 +3,20 @@ const Player = (name, token) => {
 }
 
 const Gameboard = (() => {
+    const boardDiv = document.querySelector('.gameBoard')
     const board = document.querySelectorAll('.gamePiece')
 
     const resetBoard = () => {
         board.forEach(square => square.textContent = '')
+    }
+
+    const turnBoardActive = () => {
+        board.forEach(square => square.classList.add('activeGamePiece'))
+        boardDiv.classList.add('activeGameBoard')
+    }
+    const turnBoardInactive = () => {
+        board.forEach(square => square.classList.remove('activeGamePiece'))
+        boardDiv.classList.remove('activeGameBoard')
     }
 
     board.forEach(square => square.addEventListener('click', (event) => {
@@ -14,7 +24,7 @@ const Gameboard = (() => {
     }));
     const getBoard = ()=> board
 
-    return{getBoard, resetBoard}
+    return{getBoard, resetBoard, turnBoardActive, turnBoardInactive}
 })();
 
 
@@ -79,11 +89,12 @@ const Game = (() => {
     }
 
     const resetGame = () => {
+        if (gameActive){
+            Gameboard.turnBoardInactive()  
+        }
         boardArray = ["","","","","","","","",""];
         messageDisplay.textContent = ''
         Gameboard.resetBoard()
-        document.querySelector('#player1').value = ''
-        document.querySelector('#player2').value = ''
         gameActive = false
     }
 
@@ -96,8 +107,12 @@ const Game = (() => {
     
     startBtn.addEventListener('click', ()=> {
         if (gameActive === false){
-            initPlayers()            
+            resetGame()
+            initPlayers()
+            Gameboard.turnBoardActive()         
             gameActive = true
+        }else{
+            messageDisplay.textContent = 'A game is already in play'
         }
     })
     restartBtn.addEventListener('click', resetGame)

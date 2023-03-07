@@ -1,6 +1,7 @@
 /*Josh Comeau Reset*/
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -11,12 +12,34 @@ html, body {
 /*My CSS*/
 .controls{
   border: 2px solid rgb(0, 0, 0);
-  border-radius: 1rem;
-  display: inline-block;
-  padding: 1rem;
+  border-radius: .75rem;
+  display: grid;
+  justify-content: center;
+  padding: .75rem;
+  width: clamp(240px, 50%, 540px);
+  gap: .5rem;
+  margin: 2rem auto;
+  grid-template-columns:1fr
 }
+input{
+  padding: .75rem;
+  width: 100%;
+}
+.input{
+  display: grid
+}
+
+button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: .25rem;
+}
+
 .gameBoard{
-    border: 4px solid rgb(0, 0, 0);
+    border: 4px solid rgb(99, 99, 99);
     border-radius: 1rem;
     padding: .25rem;
     width: clamp(240px, 50%, 540px);
@@ -25,6 +48,7 @@ html, body {
     gap: .25rem;
     grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
+    transition: all 100ms ease-out;
 }
 .gamePiece{
     font-size: 48px;
@@ -33,10 +57,22 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgb(52, 52, 52);
+    border: 2px solid rgb(114, 114, 114);
     border-radius: .75rem;
     color: white;
-    background-color: rgb(203, 203, 203);
+    background-color: rgb(217, 217, 217);
+    transition: all 100ms ease-out;
+}
+.activeGameBoard{
+  border: 4px solid rgb(0, 0, 0);
+  border-radius: 1rem;
+  padding: .25rem;
+  width: clamp(240px, 50%, 540px);
+  overflow: hidden;
+  display: grid;
+  gap: .25rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: auto;
 }
 
 .activeGamePiece{
@@ -48,6 +84,6 @@ html, body {
   justify-content: center;
   border: 2px solid rgb(110, 110, 110);
   border-radius: .75rem;
-  color: white;
-  background-color: rgb(216, 216, 216);
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
